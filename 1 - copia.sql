@@ -1182,7 +1182,7 @@ BEGIN
 END;
 /
 
---Paquetes
+--Paquete de Cliente
 CREATE OR REPLACE PACKAGE Cliente_Package AS
     PROCEDURE CrearCliente(
         p_nombre VARCHAR2,
@@ -1207,6 +1207,7 @@ CREATE OR REPLACE PACKAGE Cliente_Package AS
 END Cliente_Package;
 /
 
+--Paquete de Distribuidor
 CREATE OR REPLACE PACKAGE Distribuidor_Package AS
     PROCEDURE CrearDistribuidor(
         p_nombre VARCHAR2,
@@ -1227,6 +1228,7 @@ CREATE OR REPLACE PACKAGE Distribuidor_Package AS
 END Distribuidor_Package;
 /
 
+--Paquete de empleado
 CREATE OR REPLACE PACKAGE Empleado_Package AS
     PROCEDURE CrearEmpleado(
         p_nombre VARCHAR2,
@@ -1249,6 +1251,7 @@ CREATE OR REPLACE PACKAGE Empleado_Package AS
 END Empleado_Package;
 /
 
+--Paquetde de Color
 CREATE OR REPLACE PACKAGE Color_Package AS
     PROCEDURE CrearColor(p_color VARCHAR2);
 
@@ -1260,6 +1263,7 @@ CREATE OR REPLACE PACKAGE Color_Package AS
 END Color_Package;
 /
 
+--Paquete de Marca
 CREATE OR REPLACE PACKAGE Marca_Package AS
     PROCEDURE CrearMarca(p_nombre_marca VARCHAR2);
 
