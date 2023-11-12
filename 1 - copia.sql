@@ -1,55 +1,55 @@
 ----TABLA CLIENTE
 CREATE TABLE CLIENTE(
-ID_CLIENTE INT IDENTITY PRIMARY KEY NO NULL,
-NOMBRE VARHCAR2(50),
-APELLIDO VACHAR2(50),
-DIRECCION VARCAHR2(50),
+ID_CLIENTE INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+NOMBRE VARCHAR2(50),
+APELLIDO VARCHAR2(50),
+DIRECCION VARCHAR2(50),
 TELEFONO VARCHAR2(50),
 CORREO VARCHAR2(50));
 
 ----TABLA DISTRIBUIDOR 
 CREATE TABLE DISTRIBUIDOR(
-ID_DISTRIBUIDOR INT IDENTITY PRIMARY KEY NO NULL,
-NOMBRE VARHCAR2(50),
-DIRECCION VARCAHR2(50),
-TELEFONO VARCHAR2(50),
+ID_DISTRIBUIDOR INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+NOMBRE VARCHAR2(50),
+DIRECCION VARCHAR2(50),
+TELEFONO VARCHAR2(50)
 );
 
 ----TABLA EMPLEADO
 CREATE TABLE EMPLEADO(
-ID_EMPLEADO INT IDENTITY PRIMARY KEY NO NULL,
-NOMBRE VARHCAR2(50),
-APELLIDO VACHAR2(50),
+ID_EMPLEADO INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+NOMBRE VARCHAR2(50),
+APELLIDO VARCHAR2(50),
 TELEFONO VARCHAR2(50),
 CORREO VARCHAR2(50));
-);
+
 
 ----TABLA COLOR
 CREATE TABLE COLOR(
-ID_COLOR INT IDENTITY PRIMARY KEY NO NULL,
-COLOR VARHCAR2(20));
+ID_COLOR INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+COLOR VARCHAR2(20));
 
 ----TABLA MARCA
 CREATE TABLE MARCA(
-ID_MARCA INT IDENTITY PRIMARY KEY NO NULL,
-NOMBRE_MARCA VARHCAR2(20));
+ID_MARCA INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+NOMBRE_MARCA VARCHAR2(20));
 
 ----TABLA AUTOMOVIL
 CREATE TABLE AUTOMOVIL(
-ID_AUTOMOVIL INT IDENTITY PRIMARY KEY NO NULL,
+ID_AUTOMOVIL INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 MODELO VARCHAR2(50),
 ID_MARCA INT,
-FOREIGN KEY (ID_MARCA) REFERENCES MARCAS(ID_MARCA)
-A�O INT;
+FOREIGN KEY (ID_MARCA) REFERENCES MARCA(ID_MARCA),
+A�O INT,
 PRECIO FLOAT,
-NUMERO_VIN,
-ID_COLOR INT
+NUMERO_VIN VARCHAR2(50),
+ID_COLOR INT,
 FOREIGN KEY (ID_COLOR) REFERENCES COLOR(ID_COLOR));
 
 ----TABLA VENTA
 CREATE TABLE VENTA(
-ID_VENTA INT IDENTITY PRIMARY KEY NO NULL,
-FECHA VENTA DATE,
+ID_VENTA INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+FECHA_VENTA DATE,
 ID_CLIENTE INT, 
 ID_AUTOMOVIL INT, 
 ID_EMPLEADO INT,
@@ -395,19 +395,19 @@ END;
 
 -- Inserciones en la tabla CLIENTE
 INSERT INTO CLIENTE (NOMBRE, APELLIDO, DIRECCION, TELEFONO, CORREO) 
-VALUES ('Juan', 'P�rez', 'Calle 123', '123-456-7890', 'juan@example.com');
+VALUES ('Juan', 'Perez', 'Calle 123', '123-456-7890', 'juan@example.com');
 
 INSERT INTO CLIENTE (NOMBRE, APELLIDO, DIRECCION, TELEFONO, CORREO) 
-VALUES ('Mar�a', 'Gonz�lez', 'Avenida 456', '987-654-3210', 'maria@example.com');
+VALUES ('Mar�a', 'Gonzalez', 'Avenida 456', '987-654-3210', 'maria@example.com');
 
 INSERT INTO CLIENTE (NOMBRE, APELLIDO, DIRECCION, TELEFONO, CORREO) 
-VALUES ('Carlos', 'Ram�rez', 'Calle Principal', '555-123-4567', 'carlos@example.com');
+VALUES ('Carlos', 'Ramirez', 'Calle Principal', '555-123-4567', 'carlos@example.com');
 
 INSERT INTO CLIENTE (NOMBRE, APELLIDO, DIRECCION, TELEFONO, CORREO) 
-VALUES ('Ana', 'Mart�nez', 'Calle Secundaria', '333-888-7777', 'ana@example.com');
+VALUES ('Ana', 'Martinez', 'Calle Secundaria', '333-888-7777', 'ana@example.com');
 
 INSERT INTO CLIENTE (NOMBRE, APELLIDO, DIRECCION, TELEFONO, CORREO) 
-VALUES ('Pedro', 'S�nchez', 'Avenida Norte', '444-999-8888', 'pedro@example.com');
+VALUES ('Pedro', 'Sanchez', 'Avenida Norte', '444-999-8888', 'pedro@example.com');
 
 -- Inserciones en la tabla DISTRIBUIDOR
 INSERT INTO DISTRIBUIDOR (NOMBRE, DIRECCION, TELEFONO) 
@@ -427,19 +427,19 @@ VALUES ('Distribuidor E', 'Avenida 789', '777-333-2222');
 
 -- Inserciones en la tabla EMPLEADO
 INSERT INTO EMPLEADO (NOMBRE, APELLIDO, TELEFONO, CORREO) 
-VALUES ('Luis', 'Mart�nez', '111-222-3333', 'luis@example.com');
+VALUES ('Luis', 'Martinez', '111-222-3333', 'luis@example.com');
 
 INSERT INTO EMPLEADO (NOMBRE, APELLIDO, TELEFONO, CORREO) 
-VALUES ('Sof�a', 'G�mez', '555-444-3333', 'sofia@example.com');
+VALUES ('Sofia', 'Gomez', '555-444-3333', 'sofia@example.com');
 
 INSERT INTO EMPLEADO (NOMBRE, APELLIDO, TELEFONO, CORREO) 
-VALUES ('Javier', 'S�nchez', '888-777-6666', 'javier@example.com');
+VALUES ('Javier', 'Sanchez', '888-777-6666', 'javier@example.com');
 
 INSERT INTO EMPLEADO (NOMBRE, APELLIDO, TELEFONO, CORREO) 
-VALUES ('Laura', 'P�rez', '999-666-5555', 'laura@example.com');
+VALUES ('Laura', 'Perez', '999-666-5555', 'laura@example.com');
 
 INSERT INTO EMPLEADO (NOMBRE, APELLIDO, TELEFONO, CORREO) 
-VALUES ('Daniel', 'Gonz�lez', '777-333-2222', 'daniel@example.com');
+VALUES ('Daniel', 'Gonzalez', '777-333-2222', 'daniel@example.com');
 
 -- Inserciones en la tabla COLOR
 INSERT INTO COLOR (COLOR) 
@@ -474,7 +474,7 @@ INSERT INTO MARCA (NOMBRE_MARCA)
 VALUES ('Nissan');
 
 -- Inserciones en la tabla AUTOMOVIL
--- Aqu� debes tener en cuenta que la columna ID_MARCA se refiere a la tabla MARCA, por lo que debes usar valores de ID v�lidos de la tabla MARCA.
+-- Aqui debes tener en cuenta que la columna ID_MARCA se refiere a la tabla MARCA, por lo que debes usar valores de ID v�lidos de la tabla MARCA.
 INSERT INTO AUTOMOVIL (MODELO, ID_MARCA, A�O, PRECIO, NUMERO_VIN, ID_COLOR) 
 VALUES ('Corolla', 1, 2023, 25000.00, 'VIN123456', 1);
 
@@ -491,7 +491,7 @@ INSERT INTO AUTOMOVIL (MODELO, ID_MARCA, A�O, PRECIO, NUMERO_VIN, ID_COLOR)
 VALUES ('Altima', 5, 2023, 28000.00, 'VIN987654', 3);
 
 -- Inserciones en la tabla VENTA
--- Aseg�rate de usar IDs v�lidos de CLIENTE, AUTOMOVIL y EMPLEADO que se hayan insertado previamente.
+-- Asegurate de usar IDs v�lidos de CLIENTE, AUTOMOVIL y EMPLEADO que se hayan insertado previamente.
 
 INSERT INTO VENTA (FECHA_VENTA, ID_CLIENTE, ID_AUTOMOVIL, ID_EMPLEADO) 
 VALUES (TO_DATE('2023-11-02', 'YYYY-MM-DD'), 1, 1, 1);
@@ -730,6 +730,21 @@ BEGIN
 END;
 /
 
+--15
+CREATE OR REPLACE FUNCTION ObtenerClienteMasFrecuente RETURN VARCHAR2 IS
+   v_cliente_mas_frecuente VARCHAR2(100);
+BEGIN
+   SELECT C.NOMBRE || ' ' || C.APELLIDO INTO v_cliente_mas_frecuente
+   FROM CLIENTE C
+   JOIN VENTA V ON C.ID_CLIENTE = V.ID_CLIENTE
+   GROUP BY C.NOMBRE, C.APELLIDO
+   ORDER BY COUNT(V.ID_VENTA) DESC
+   FETCH FIRST 1 ROW ONLY;
+   
+   RETURN v_cliente_mas_frecuente;
+END;
+/
+
 
 --VISTAS
 --1 INFORMACION EMPLEADO
@@ -747,7 +762,7 @@ SELECT * FROM Vista_Nombre_Completo;
 --2 INFORMACION DISTRIBUIDOR
 CREATE OR REPLACE VIEW Vista_Informacion_Distribuidor AS
 SELECT
-    NOMBRE || ', ' || DIRECCION || ', ' || TELEFONO AS "Información Distribuidor"
+    NOMBRE || ', ' || DIRECCION || ', ' || TELEFONO AS "InformaciOn Distribuidor"
 FROM DISTRIBUIDOR;
 
 SELECT * FROM Vista_Informacion_Distribuidor;
@@ -766,7 +781,7 @@ SELECT * FROM Vista_Nombre_Cliente;
 CREATE OR REPLACE VIEW Vista_Informacion_Venta_Empleado AS
 SELECT
     E.NOMBRE || ' ' || E.APELLIDO AS "Nombre del Empleado",
-    A.MODELO AS "Modelo del Automóvil",
+    A.MODELO AS "Modelo del Automovil",
     V.FECHA_VENTA AS "Fecha de Venta"
 FROM VENTA V
 JOIN EMPLEADO E ON V.ID_EMPLEADO = E.ID_EMPLEADO
@@ -792,7 +807,7 @@ CREATE OR REPLACE VIEW Vista_Informacion_Automovil AS
 SELECT
     A.MODELO AS "Modelo",
     M.NOMBRE_MARCA AS "Marca",
-    A.AÑO AS "Año",
+    A.A�O AS "A�o",
     A.PRECIO AS "Precio"
 FROM AUTOMOVIL A
 JOIN MARCA M ON A.ID_MARCA = M.ID_MARCA;
@@ -850,16 +865,16 @@ DECLARE
   v_max_precio FLOAT;
   v_id_automovil INT;
 BEGIN
-  -- Encontrar el precio máximo en la tabla AUTOMOVIL
+  -- Encontrar el precio maximo en la tabla AUTOMOVIL
   SELECT MAX(PRECIO) INTO v_max_precio FROM AUTOMOVIL;
 
-  -- Encontrar el ID del automóvil con el precio máximo
+  -- Encontrar el ID del automovil con el precio maximo
   SELECT ID_AUTOMOVIL INTO v_id_automovil
   FROM AUTOMOVIL
   WHERE PRECIO = v_max_precio;
 
   -- Mostrar el resultado
-  DBMS_OUTPUT.PUT_LINE('El automóvil con el precio más alto tiene un precio de ' || v_max_precio || ' y su ID es ' || v_id_automovil);
+  DBMS_OUTPUT.PUT_LINE('El automóvil con el precio mas alto tiene un precio de ' || v_max_precio || ' y su ID es ' || v_id_automovil);
 END;
 /
 
@@ -889,12 +904,12 @@ BEGIN
   WHERE A.PRECIO = v_max_precio;
 
   -- Mostrar información de la venta 
-  DBMS_OUTPUT.PUT_LINE('La venta más costosa tiene un ID de venta: ' || v_id_venta);
+  DBMS_OUTPUT.PUT_LINE('La venta mas costosa tiene un ID de venta: ' || v_id_venta);
   DBMS_OUTPUT.PUT_LINE('Fecha de venta: ' || TO_CHAR(v_fecha_venta, 'DD/MM/YYYY'));
   DBMS_OUTPUT.PUT_LINE('ID del cliente: ' || v_id_cliente);
-  DBMS_OUTPUT.PUT_LINE('ID del automóvil: ' || v_id_automovil);
+  DBMS_OUTPUT.PUT_LINE('ID del automovil: ' || v_id_automovil);
   DBMS_OUTPUT.PUT_LINE('ID del empleado: ' || v_id_empleado);
-  DBMS_OUTPUT.PUT_LINE('Precio más alto: ' || v_max_precio);
+  DBMS_OUTPUT.PUT_LINE('Precio mas alto: ' || v_max_precio);
 END;
 /
 
@@ -908,7 +923,7 @@ DECLARE
   v_min_precio FLOAT;
 
 BEGIN
-  -- Encontrar el precio mínimo en VENTA
+  -- Encontrar el precio minimo en VENTA
   SELECT MIN(PRECIO) INTO v_min_precio
   FROM (
     SELECT VENTA.ID_VENTA, AUTOMOVIL.PRECIO
@@ -916,20 +931,20 @@ BEGIN
     JOIN AUTOMOVIL ON VENTA.ID_AUTOMOVIL = AUTOMOVIL.ID_AUTOMOVIL
   );
 
-  -- Encontrar la venta con el precio más bajo
+  -- Encontrar la venta con el precio mas bajo
   SELECT V.ID_VENTA, V.FECHA_VENTA, V.ID_CLIENTE, V.ID_AUTOMOVIL, V.ID_EMPLEADO
   INTO v_id_venta, v_fecha_venta, v_id_cliente, v_id_automovil, v_id_empleado
   FROM VENTA V
   JOIN AUTOMOVIL A ON V.ID_AUTOMOVIL = A.ID_AUTOMOVIL
   WHERE A.PRECIO = v_min_precio;
 
-  -- Mostrar información de la venta con el precio más bajo
-  DBMS_OUTPUT.PUT_LINE('La venta más económica tiene un ID de venta: ' || v_id_venta);
+  -- Mostrar información de la venta con el precio mas bajo
+  DBMS_OUTPUT.PUT_LINE('La venta mas econamica tiene un ID de venta: ' || v_id_venta);
   DBMS_OUTPUT.PUT_LINE('Fecha de venta: ' || TO_CHAR(v_fecha_venta, 'DD/MM/YYYY'));
   DBMS_OUTPUT.PUT_LINE('ID del cliente: ' || v_id_cliente);
-  DBMS_OUTPUT.PUT_LINE('ID del automóvil: ' || v_id_automovil);
+  DBMS_OUTPUT.PUT_LINE('ID del automovil: ' || v_id_automovil);
   DBMS_OUTPUT.PUT_LINE('ID del empleado: ' || v_id_empleado);
-  DBMS_OUTPUT.PUT_LINE('Precio más bajo: ' || v_min_precio);
+  DBMS_OUTPUT.PUT_LINE('Precio mas bajo: ' || v_min_precio);
 END;
 /
 
@@ -938,16 +953,16 @@ DECLARE
   v_min_precio FLOAT;
   v_id_automovil INT;
 BEGIN
-  -- Encontrar el precio mínimo en la tabla AUTOMOVIL
+  -- Encontrar el precio minimo en la tabla AUTOMOVIL
   SELECT MIN(PRECIO) INTO v_min_precio FROM AUTOMOVIL;
 
-  -- Encontrar el ID del automóvil con el precio mínimo
+  -- Encontrar el ID del automóvil con el precio minimo
   SELECT ID_AUTOMOVIL INTO v_id_automovil
   FROM AUTOMOVIL
   WHERE PRECIO = v_min_precio;
 
   -- Mostrar el resultado
-  DBMS_OUTPUT.PUT_LINE('El automóvil con el precio más bajo tiene un precio de ' || v_min_precio || ' y su ID es ' || v_id_automovil);
+  DBMS_OUTPUT.PUT_LINE('El automóvil con el precio mas bajo tiene un precio de ' || v_min_precio || ' y su ID es ' || v_id_automovil);
 END;
 /
 
@@ -980,7 +995,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('ID de Venta: ' || v_id_venta);
     DBMS_OUTPUT.PUT_LINE('Fecha de Venta: ' || TO_CHAR(v_fecha_venta, 'DD/MM/YYYY'));
     DBMS_OUTPUT.PUT_LINE('ID de Cliente: ' || v_id_cliente);
-    DBMS_OUTPUT.PUT_LINE('ID de Automóvil: ' || v_id_automovil);
+    DBMS_OUTPUT.PUT_LINE('ID de Automovil: ' || v_id_automovil);
     DBMS_OUTPUT.PUT_LINE('ID de Empleado: ' || v_id_empleado);
     DBMS_OUTPUT.PUT_LINE('Precio con IVA: ' || v_precio_iva);
     DBMS_OUTPUT.PUT_LINE('----------------------------------------');
@@ -988,7 +1003,8 @@ BEGIN
 END;
 /
 
---Listar todos los clientes
+---CURSORES
+--1 Listar todos los clientes
 DECLARE
   CURSOR c_clientes IS
     SELECT NOMBRE, APELLIDO, DIRECCION, TELEFONO, CORREO
@@ -999,7 +1015,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar todos los distribuidores
+--2 Listar todos los distribuidores
 DECLARE
   CURSOR c_distribuidores IS
     SELECT NOMBRE, DIRECCION, TELEFONO
@@ -1010,7 +1026,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar todos los empleados
+--3 Listar todos los empleados
 DECLARE
   CURSOR c_empleados IS
     SELECT NOMBRE, APELLIDO, TELEFONO, CORREO
@@ -1021,7 +1037,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar colores disponibles
+--4 Listar colores disponibles
 DECLARE
   CURSOR c_colores IS
     SELECT COLOR
@@ -1032,7 +1048,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar las marcas de autos disponibles
+--5 Listar las marcas de autos disponibles
 DECLARE
   CURSOR c_marcas IS
     SELECT NOMBRE_MARCA
@@ -1043,7 +1059,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar automoviles disponibles
+--6 Listar automoviles disponibles
 DECLARE
   CURSOR c_automoviles IS
     SELECT MODELO, A�O, PRECIO
@@ -1054,7 +1070,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar las ventas realizadas en un rango de fechas espec�fico
+--7 Listar las ventas realizadas en un rango de fechas especifico
 DECLARE
   CURSOR c_ventas_fechas IS
     SELECT v.FECHA_VENTA, c.NOMBRE AS NOMBRE_CLIENTE, a.MODELO AS MODELO_AUTOMOVIL
@@ -1064,11 +1080,11 @@ DECLARE
     WHERE v.FECHA_VENTA BETWEEN TO_DATE('2023-01-01', 'YYYY-MM-DD') AND TO_DATE('2023-12-31', 'YYYY-MM-DD');
 BEGIN
   FOR venta_rec IN c_ventas_fechas LOOP
-    DBMS_OUTPUT.PUT_LINE('Fecha: ' || venta_rec.FECHA_VENTA || ', Cliente: ' || venta_rec.NOMBRE_CLIENTE || ', Autom�vil: ' || venta_rec.MODELO_AUTOMOVIL);
+    DBMS_OUTPUT.PUT_LINE('Fecha: ' || venta_rec.FECHA_VENTA || ', Cliente: ' || venta_rec.NOMBRE_CLIENTE || ', Automovil: ' || venta_rec.MODELO_AUTOMOVIL);
   END LOOP;
 END;
 
---Calcular el total de ventas por empleado
+--8 Calcular el total de ventas por empleado
 DECLARE
   CURSOR c_ventas_empleados IS
     SELECT e.NOMBRE, e.APELLIDO, COUNT(v.ID_VENTA) AS NUM_VENTAS
@@ -1081,7 +1097,7 @@ BEGIN
   END LOOP;
 END;
 
---Encontrar el cliente que m�s compras ha realizado
+--9 Encontrar el cliente que m�s compras ha realizado
 DECLARE
   CURSOR c_cliente_mas_compras IS
     SELECT c.NOMBRE, c.APELLIDO, COUNT(v.ID_VENTA) AS NUM_COMPRAS
@@ -1092,11 +1108,11 @@ DECLARE
 BEGIN
   OPEN c_cliente_mas_compras;
   FETCH c_cliente_mas_compras INTO v_nombre, v_apellido, v_num_compras;
-  DBMS_OUTPUT.PUT_LINE('El cliente con m�s compras es: ' || v_nombre || ' ' || v_apellido || ' - Compras: ' || v_num_compras);
+  DBMS_OUTPUT.PUT_LINE('El cliente con mas compras es: ' || v_nombre || ' ' || v_apellido || ' - Compras: ' || v_num_compras);
   CLOSE c_cliente_mas_compras;
 END;
 
---Listar los distribuidores que suministran piezas de un color espec�fico
+--10 Listar los distribuidores que suministran piezas de un color especifico
 DECLARE
   v_color VARCHAR2(20) := 'Rojo';
   CURSOR c_distribuidores_color IS
@@ -1111,7 +1127,7 @@ BEGIN
   END LOOP;
 END;
 
---Listar los empleados que no han realizado ninguna venta
+--11 Listar los empleados que no han realizado ninguna venta
 DECLARE
   CURSOR c_empleados_sin_ventas IS
     SELECT e.NOMBRE, e.APELLIDO
@@ -1123,7 +1139,7 @@ BEGIN
   END LOOP;
 END;
 
--- Calcular el precio promedio de los autom�viles de una marca espec�fica
+--12 Calcular el precio promedio de los autom�viles de una marca especifica
 DECLARE
   v_marca VARCHAR2(20) := 'Toyota';
   CURSOR c_precio_promedio IS
@@ -1134,13 +1150,13 @@ DECLARE
 BEGIN
   OPEN c_precio_promedio;
   FETCH c_precio_promedio INTO v_precio_promedio;
-  DBMS_OUTPUT.PUT_LINE('Precio promedio de autom�viles de marca ' || v_marca || ': ' || v_precio_promedio);
+  DBMS_OUTPUT.PUT_LINE('Precio promedio de automoviles de marca ' || v_marca || ': ' || v_precio_promedio);
   CLOSE c_precio_promedio;
 END;
 
---Listar los autom�viles vendidos a un cliente en particular
+--13 Listar los autom�viles vendidos a un cliente en particular
 DECLARE
-  v_cliente_id INT := 5; -- ID del cliente espec�fico
+  v_cliente_id INT := 5; -- ID del cliente especifico
   CURSOR c_automoviles_cliente IS
     SELECT a.MODELO, a.A�O
     FROM VENTA v
@@ -1152,7 +1168,7 @@ BEGIN
   END LOOP;
 END;
 
---Contar el n�mero de ventas realizadas en un mes espec�fico
+--14 Contar el n�mero de ventas realizadas en un mes espec�fico
 DECLARE
   v_mes NUMBER := 7; -- N�mero de mes (por ejemplo, julio)
   CURSOR c_ventas_mes IS
@@ -1162,13 +1178,13 @@ DECLARE
 BEGIN
   OPEN c_ventas_mes;
   FETCH c_ventas_mes INTO v_num_ventas_mes;
-  DBMS_OUTPUT.PUT_LINE('N�mero de ventas en el mes ' || v_mes || ': ' || v_num_ventas_mes);
+  DBMS_OUTPUT.PUT_LINE('Numero de ventas en el mes ' || v_mes || ': ' || v_num_ventas_mes);
   CLOSE c_ventas_mes;
 END;
 
---Listar los clientes que compraron autom�viles de una marca espec�fica
+--15 Listar los clientes que compraron automoviles de una marca especifica
 DECLARE
-  v_marca_id INT := 2; -- ID de la marca espec�fica
+  v_marca_id INT := 2; -- ID de la marca especifica
   CURSOR c_clientes_marca IS
     SELECT DISTINCT c.NOMBRE, c.APELLIDO
     FROM CLIENTE c
@@ -1182,7 +1198,7 @@ BEGIN
 END;
 /
 
---Paquete de Cliente
+--Paquetes
 CREATE OR REPLACE PACKAGE Cliente_Package AS
     PROCEDURE CrearCliente(
         p_nombre VARCHAR2,
@@ -1207,7 +1223,6 @@ CREATE OR REPLACE PACKAGE Cliente_Package AS
 END Cliente_Package;
 /
 
---Paquete de Distribuidor
 CREATE OR REPLACE PACKAGE Distribuidor_Package AS
     PROCEDURE CrearDistribuidor(
         p_nombre VARCHAR2,
@@ -1228,7 +1243,6 @@ CREATE OR REPLACE PACKAGE Distribuidor_Package AS
 END Distribuidor_Package;
 /
 
---Paquete de empleado
 CREATE OR REPLACE PACKAGE Empleado_Package AS
     PROCEDURE CrearEmpleado(
         p_nombre VARCHAR2,
@@ -1251,7 +1265,6 @@ CREATE OR REPLACE PACKAGE Empleado_Package AS
 END Empleado_Package;
 /
 
---Paquetde de Color
 CREATE OR REPLACE PACKAGE Color_Package AS
     PROCEDURE CrearColor(p_color VARCHAR2);
 
@@ -1263,7 +1276,6 @@ CREATE OR REPLACE PACKAGE Color_Package AS
 END Color_Package;
 /
 
---Paquete de Marca
 CREATE OR REPLACE PACKAGE Marca_Package AS
     PROCEDURE CrearMarca(p_nombre_marca VARCHAR2);
 
